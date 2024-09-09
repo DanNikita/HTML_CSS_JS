@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Lab_04</title>
+    </head>
+   <body>
+    <h1>Lab 04 - simple class </h1>
+        <script>
+            // collection object
+           // var NewClass = new Object();
+            //NewClass.title = "This is title";
+            //NewClass.url = "www.google.com";
+            function NewClass(title,url)
+            {
+                    this.title = title;
+                    this.url = url;
+                    function show()  
+                {
+                    document.write(NewClass.title + " - "+ 
+                    NewClass.url);
+                }
+            }
+            var example = new NewClass("This is title","www.google.com");
+            example.show();
+            
+        </script>
+   </body>
+</html>
+
+
+<!-- 
+Упражнение 4. Создание и использование объектов.
+1.	Создайте HTML-документ laba-1-4.html.
+2.	Определите класс NewClass.
+3.	Определите свойства title, url и метод show().
+Для вывода в методе show() строки на экран воспользуйтесь методом document.write().
+
+
+-->
