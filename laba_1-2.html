@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Lab_02</title>
+    </head>
+   <body>
+    <h1>Lab 02 - simple matrix </h1>
+        <script>
+          (function()
+          {
+            "use strict";
+            var t = 10;
+            //var i = 5;
+            //var j = 3;
+            document.write("<table>");
+              for (var tr = 1; tr <= t; tr++)
+            {
+              document.write("<tr>");
+              for (var td = 1; td <= t; td++)
+              {
+                  document.write("<td>");
+                  document.write(tr + "*" + td);
+                  //document.write(tr*td);
+                  document.write("</td>");
+              }
+              document.write("</tr>");
+            }
+          }
+        ());
+          document.write("</table>");
+        </script>
+   </body>
+</html>
+
+
+<!-- 
+Упражнение 2. Использование операторов языка.
+1.	Создайте HTML-документ laba-1-2.html. 
+2.	С помощью циклов сформируйте таблицу 10 х 10.
+3.	В ячейки таблицы выведите результат умножения i * j.
+
+-->
