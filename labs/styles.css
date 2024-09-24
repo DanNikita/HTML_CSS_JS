@@ -1,0 +1,36 @@
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+a:link    {color:blue; text-decoration:none}
+            a:visited {color:pink; text-decoration:none}
+            a:hover   {color:red; text-decoration:underline}
+            a:active  {color:yellow; text-decoration:underline}
+            input:hover {border:2px solid red;}
+#header{
+    text-align: center;
+    font-style: italic;
+    letter-spacing: 2px;
+    font-size: 60px;
+    margin: 10px;
+    height: 80px;
+    background-color: #61b8c4;
+}
+#box {
+    border-radius: 10px;
+    }
+    
+#legend{
+    font-style: bold;
+    letter-spacing: 2px;
+    font-size: 20px;
+    margin: 20px;
+    background-color: #d6d5d5;
+}
+#footer{
+    font-size: 20px;
+    margin: 10px;
+    height: 30px;
+    background-color: #61b8c4;
+    text-shadow:1px 2px #ffffff;
+
+}
