@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Phonebook</title>
+    <script src="modernizr.js"></script>
+</head>
+<body>
+
+<h1>Телефонная записная книжка</h1>
+<fieldset>
+    <label for="name">Имя:</label>
+    <input type="text" id="name" placeholder="Введите имя">
+    <br>
+    <label for="phone">Телефон:</label>
+    <input type="text" id="phone" placeholder="Введите телефон">
+    <br>
+    <button id="addButton">Добавить</button>
+</fieldset>
+<h2>Записи</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Имя</th>
+        <th>Телефон</th>
+        <th>Действие</th>
+    </tr>
+    </thead>
+    <tbody id="contactList"></tbody>
+</table>
+
+<script>
+     "use strict"
+     //if (modernizr.localstorage){}
+    if (typeof window.localStorage !== "undefined" || typeof window.sessionStorage !== "undefined") (function () {
+    document.addEventListener("DOMContentLoaded", function() {
+        const nameInput = document.getElementById("name");
+        const phoneInput = document.getElementById("phone");
+        const addButton = document.getElementById("addButton");
+        const contactList = document.getElementById("contactList");
+
+        
+        function updateContactList() {
+            contactList.innerHTML = '';
+            const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+
+            contacts.forEach((contact, index) => {
+                const row = document.createElement("tr");
+                const nameCell = document.createElement("td");
+                const phoneCell = document.createElement("td");
+                const actionCell = document.createElement("td");
+
+                nameCell.textContent = contact.name;
+                phoneCell.textContent = contact.phone;
+
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Удалить";
+                deleteButton.onclick = () => {
+                    removeContact(index);
+                };
+
+                actionCell.appendChild(deleteButton);
+                row.appendChild(nameCell);
+                row.appendChild(phoneCell);
+                row.appendChild(actionCell);
+                contactList.appendChild(row);
+            });
+        }
+
+        
+        function addContact() {
+            const name = nameInput.value.trim();
+            const phone = phoneInput.value.trim();
+
+            if (name && phone) {
+                const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+                contacts.push({ name, phone });
+                localStorage.setItem("contacts", JSON.stringify(contacts));
+                nameInput.value = "";
+                phoneInput.value = "";
+                updateContactList();
+            } else {
+                alert("Пожалуйста, заполните оба поля.");
+            }
+        }
+
+        
+        function removeContact(index) {
+            const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+            contacts.splice(index, 1);
+            localStorage.setItem("contacts", JSON.stringify(contacts));
+            updateContactList();
+        }
+
+        
+        addButton.onclick = addContact;
+
+        updateContactList();
+    });
+}());
+</script>
+
+</body>
+</html>
